@@ -1,8 +1,16 @@
 package calc
 
-func Add(args ...int) {
+import "fmt"
+
+func Add(numbers ...int) (error, int) {
 	var sum int
-	for _, val := range args {
-		sum = sum + val
+
+	if len(numbers) < 2 {
+		return fmt.Errorf("provide more than 2 number"), sum
+	} else {
+		for _, num := range numbers {
+			sum = sum + num
+		}
+		return nil, sum
 	}
 }
